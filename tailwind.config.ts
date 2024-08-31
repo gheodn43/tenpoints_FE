@@ -13,8 +13,20 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        primary: '#787F99',   // Màu chính
+        secondary: '#333645', // Màu phụ
+        accent: '#D9D9D9',    // Màu nhấn
+        neutral: '#9D9D9D',   // Màu trung tính
+        background: '#000000' // Màu nền
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        "racing-sans": ['"Racing Sans One"', "sans-serif"],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

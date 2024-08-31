@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Racing+Sans+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,5 +31,38 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .responsive-font-small {
+    font-size: clamp(16px, 4vw + 1rem, 16px);
+  }
+  .responsive-font-medium {
+    font-size: clamp(16px, 5vw + 1rem, 18px);
+  }
+  .responsive-font-large {
+    font-size: clamp(16px, 6vw + 1rem, 21px);
+  }
+
+  @media (min-width: 640px) { /* Tablet */
+    .responsive-font-small {
+      font-size: clamp(20px, 3vw + 1rem, 20px)
+    }
+    .responsive-font-medium {
+      font-size: clamp(20px, 4vw + 1rem, 22px);
+    }
+    .responsive-font-large {
+      font-size: clamp(20px, 5vw + 1rem, 25px);
+    }
+  }
+
+  @media (min-width: 1024px) { /* Desktop */
+    .responsive-font-small {
+      font-size: clamp(21px, 3vw + 1rem, 21px);
+    }
+    .responsive-font-medium {
+      font-size: clamp(21px, 4vw + 1rem, 24px);
+    }
+    .responsive-font-large {
+      font-size: clamp(21px, 5vw + 1rem, 27px);
+    }
   }
 }
