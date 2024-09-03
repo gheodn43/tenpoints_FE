@@ -18,7 +18,11 @@ const config: Config = {
         secondary: '#333645', // Màu phụ
         accent: '#D9D9D9',    // Màu nhấn
         neutral: '#9D9D9D',   // Màu trung tính
-        background: '#000000' // Màu nền
+        background: '#000000', // Màu nền
+        green: '#22C55E',
+        red: '#F87171',
+        blue: '#94DBFB'
+
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
