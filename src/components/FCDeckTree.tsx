@@ -22,8 +22,6 @@ type TreeNode = {
 const DeckTree = ({ decks }: { decks: Deck[] }) => {
   const buildTree = (): TreeNode[] => {
     const tree: { [key: string]: TreeNode } = {};
-
-    // Xây dựng cây
     decks.forEach((deck) => {
       if (!tree[deck.deck_path]) {
         tree[deck.deck_path] = { deck, children: [], isExpanded: false };
@@ -35,8 +33,6 @@ const DeckTree = ({ decks }: { decks: Deck[] }) => {
         tree[deck.parent_deck_path].children.push(tree[deck.deck_path]);
       }
     });
-
-    // Tìm root nodes (deck có parent là Null)
     return Object.values(tree).filter((node) => node.deck.parent_deck_path === null);
   };
 

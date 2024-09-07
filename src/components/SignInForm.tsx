@@ -81,7 +81,7 @@ const SignInForm = () => {
                     placeholder="Email"
                     className="px-2 md:py-4 py-3 responsive-font-small bg-secondary rounded-xl border border-primary placeholder-neutral focus:outline-none focus:border-purple-500 w-full"
                   />
-                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage name="email" component="div" className="text-red text-sm" />
                 </div>
                 <div className="mb-4">
                   <Field
@@ -90,7 +90,7 @@ const SignInForm = () => {
                     placeholder="Password"
                     className="px-2 md:py-4 py-3 responsive-font-small bg-secondary rounded-xl border border-primary placeholder-neutral focus:outline-none focus:border-purple-500 w-full"
                   />
-                  <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage name="password" component="div" className="text-red text-sm" />
                 </div>
                 <div className="flex justify-center">
                   <button

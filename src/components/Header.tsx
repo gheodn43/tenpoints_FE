@@ -4,9 +4,9 @@ import client from "../apolloClient";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LOGOUT_MUTATION } from '@/graphql/logout.mutation';
 import { CHECK_AUTH_QUERY } from '@/graphql/checkAuth.query';
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { useLogout } from '../hooks/useLogout'; 
 
 const Header = () => {
   const [username, setUsername] = useState<string | null>(null);
@@ -16,6 +16,7 @@ const Header = () => {
   const { data: authData, loading: authLoading } = useQuery(CHECK_AUTH_QUERY, {
     client,
   });
+  const logout = useLogout();
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -38,11 +39,6 @@ const Header = () => {
       fetchUsername();
     }
   }, [authData, authLoading]);
-
-  const [logout] = useMutation(LOGOUT_MUTATION, {
-    client,
-  });
-
   const handleUserIconClick = () => {
     setMenuOpen(!menuOpen);
   };
@@ -53,19 +49,11 @@ const Header = () => {
   };
 
   const handleLogoutClick = async () => {
-    try {
-      const { data } = await logout();
-      if (data && data.logout) {
-        localStorage.removeItem('username');
-        localStorage.removeItem('access_token');
-        setUsername(null);
-        setMenuOpen(false); 
-        router.replace('/');
-      } else {
-        console.error('Logout failed: Server returned false');
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
+    const success = await logout(); 
+    if (success) {
+      setUsername(null);
+      setMenuOpen(false);
+      router.replace('/');
     }
   };
 
