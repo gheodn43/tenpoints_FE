@@ -21,13 +21,10 @@ const Header = () => {
   useEffect(() => {
     const fetchUsername = async () => {
       const storedUsername = localStorage.getItem('username');
-
       if (storedUsername) {
         setUsername(storedUsername);
       } else {
-        console.log('username is null and call check auth')
         if (authData && authData.isAuthenticated.is_authenticated) {
-          console.log('username: ' + authData.isAuthenticated.username + ", is auth: "+ authData.isAuthenticated.is_authenticated)
           localStorage.setItem('username', authData.isAuthenticated.username);
           setUsername(authData.isAuthenticated.username);
         }

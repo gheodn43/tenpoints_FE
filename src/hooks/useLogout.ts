@@ -8,14 +8,9 @@ export const useLogout = () => {
     client,
   });
   const clearIndexedDB = async () => {
-    try {
-      await dbDeck.transaction('rw', dbDeck.deck, async () => {
-        await dbDeck.deck.clear(); 
-      });
-      console.log('IndexedDB cleared successfully.');
-    } catch (error) {
-      console.error('Error clearing IndexedDB:', error);
-    }
+    await dbDeck.transaction('rw', dbDeck.deck, async () => {
+      await dbDeck.deck.clear();
+    });
   };
   const logout = async () => {
     try {
@@ -26,14 +21,11 @@ export const useLogout = () => {
         localStorage.removeItem('access_token');
         return true;
       } else {
-        console.error('Logout failed: Server returned false');
         return false;
       }
     } catch (error) {
-      console.error('Logout error:', error);
       return false;
     }
   };
-
   return logout;
 };
